@@ -230,11 +230,11 @@ func (p *Plugin) MessageWillBePosted(c *plugin.Context, post *model.Post) (*mode
 
 // MessageWillBeUpdated is invoked when a message is updated by a user before it is committed
 // to the database.
-func (p *Plugin) MessageWillBeUpdated(c *plugin.Context, post *model.Post, _ *model.Post) (*model.Post, string) {
+func (p *Plugin) MessageWillBeUpdated(c *plugin.Context, newPost, oldPost *model.Post) (*model.Post, string) {
 	conf := p.getConfig()
 	if !conf.EnableOnUpdate {
-		return post, ""
+		return newPost, ""
 	}
 
-	return p.ProcessPost(c, post)
+	return p.ProcessPost(c, newPost)
 }

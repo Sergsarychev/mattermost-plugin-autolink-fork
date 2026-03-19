@@ -6,7 +6,7 @@ toolchain go1.22.8
 
 require (
 	github.com/gorilla/mux v1.8.1
-	github.com/mattermost/mattermost/server/public v0.1.9
+	github.com/mattermost/mattermost/server/public v0.2.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.10.0
 )

@@ -488,24 +488,24 @@ func TestSpecialCases(t *testing.T) {
 			{
 				// user updates the modified post and sets it back to the original text
 
-				originalPost := &model.Post{
-					Message: tt.expectedMessage,
-				}
 				post := &model.Post{
 					Message: tt.inputMessage,
 				}
+				originalPost := &model.Post{
+					Message: tt.expectedMessage,
+				}
 
-				rpost, _ := p.MessageWillBeUpdated(&plugin.Context{}, originalPost, post)
+				rpost, _ := p.MessageWillBeUpdated(&plugin.Context{}, post, originalPost)
 
 				assert.Equal(t, tt.expectedMessage, rpost.Message)
 			}
 			{
 				// user updates an empty post to the original text
 
-				emptyPost := &model.Post{}
 				post := &model.Post{
 					Message: tt.inputMessage,
 				}
+				emptyPost := &model.Post{}
 
 				rpost, _ := p.MessageWillBeUpdated(&plugin.Context{}, post, emptyPost)
 
